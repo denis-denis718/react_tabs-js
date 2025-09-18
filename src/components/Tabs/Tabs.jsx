@@ -11,23 +11,27 @@ export const Tabs = ({ tabs, activeTabId, onTabSelected }) => {
               className={tab.id === activeTab.id ? 'is-active' : ''}
               data-cy="Tab"
             >
-              <a href={`#${tab.id}`} 
-              data-cy="TabLink"
-              className={tab.id === activeTab.id ? 'is-active' : ''}
-              tabIndex={0}
-              onClick={e => {
-                e.preventDefault();
-                if (tab.id !== activeTab.id) {
+              <a
+                href={`#${tab.id}`}
+                data-cy="TabLink"
+                className={tab.id === activeTab.id ? 'is-active' : ''}
+                tabIndex={0}
+                onClick={e => {
+                  e.preventDefault();
+                  if (tab.id !== activeTab.id) {
                     onTabSelected(tab.id);
-                }
-              }}
-              onKeyDown = {e => {
-                if ((e.key === 'Enter' || e.key === ' ') && tab.id !== activeTab.id) {
+                  }
+                }}
+                onKeyDown={e => {
+                  if (
+                    (e.key === 'Enter' || e.key === ' ') &&
+                    tab.id !== activeTab.id
+                  ) {
                     e.preventDefault();
                     onTabSelected(tab.id);
-                }
-              }}
-              aria-current={tab.id === activeTab.id ? 'page' : undefined}
+                  }
+                }}
+                aria-current={tab.id === activeTab.id ? 'page' : undefined}
               >
                 {tab.title}
               </a>
